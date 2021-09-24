@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CornerLibrary">
         <activity
-            android:name=".View.MainViewActivity"
+            android:name=".view.MainViewActivity"
             android:exported="true" />
         <activity
             android:name=".MainActivity"

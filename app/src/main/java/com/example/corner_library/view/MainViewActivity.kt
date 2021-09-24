@@ -1,4 +1,4 @@
-package com.example.corner_library.View
+package com.example.corner_library.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
