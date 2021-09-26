@@ -13,10 +13,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        var logoImage = findViewById<ImageView>(R.id.splashLogo)
+        var logoImage = findViewById<ImageView>(R.id.splash_logo)
         var logo_ani : Animation
 
-        var inputLayout = findViewById<LinearLayout>(R.id.inputInfo)
+        var inputLayout = findViewById<LinearLayout>(R.id.input_info)
         var input_ani : Animation
 
         logo_ani = AnimationUtils.loadAnimation(this, R.anim.slide_logo)
