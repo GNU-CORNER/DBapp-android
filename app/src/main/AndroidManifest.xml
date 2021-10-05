@@ -11,12 +11,6 @@
         android:theme="@style/Theme.CornerLibrary">
         <activity
             android:name=".view.SplashActivity"
-            android:exported="true" />
-        <activity
-            android:name=".view.MainViewActivity"
-            android:exported="true" />
-        <activity
-            android:name=".MainActivity"
             android:exported="true"
             android:theme="@style/SplashTheme">
             <intent-filter>
@@ -25,6 +19,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".view.MainViewActivity"
+            android:exported="true" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true" />
     </application>
 
 </manifest>
