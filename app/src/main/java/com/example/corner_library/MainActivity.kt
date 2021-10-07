@@ -9,7 +9,6 @@ import android.widget.LinearLayout
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
-        setTheme(R.style.Theme_CornerLibrary)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
