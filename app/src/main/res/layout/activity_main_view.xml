@@ -14,6 +14,13 @@
         android:src="@drawable/logo2"
         android:layout_gravity="center"/>
 
-
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/search_bar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="20dp"
+        android:paddingRight="10dp"
+        android:background="@drawable/search_box"
+        android:drawableRight="@drawable/search_logo" />
 
 </LinearLayout>
