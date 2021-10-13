@@ -23,4 +23,12 @@
         android:background="@drawable/search_box"
         android:drawableRight="@drawable/search_logo" />
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/categories"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:orientation="vertical"
+        tools:listitem="@layout/category_recycler_view"/>
+
 </LinearLayout>
