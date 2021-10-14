@@ -8,16 +8,17 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.corner_library.R
+import com.example.corner_library.model.Category
 
-class CategoryAdapter(private val context: Context) : RecyclerView.Adapter<CategoryAdapter.ViewHolder>() {
-    var titles = ArrayList<String>();
+class CategoryAdapter(private val context: Context, val category: ArrayList<Category>) : RecyclerView.Adapter<CategoryAdapter.ViewHolder>() {
+//    var category = ArrayList<Category>();
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         private var v: View = view;
-        private var titleName: TextView = itemView.findViewById(R.id.category_title)
+        var titleName: TextView = itemView.findViewById(R.id.category_title)
+        var rvProject: RecyclerView = itemView.findViewById(R.id.mini_projects)
 
-        fun bind(listener: View.OnClickListener, item: String) {
-            titleName.text = item
+        fun bind(listener: View.OnClickListener) {
             v.setOnClickListener(listener)
         }
     }
@@ -29,13 +30,18 @@ class CategoryAdapter(private val context: Context) : RecyclerView.Adapter<Categ
     }
 
     override fun onBindViewHolder(holder: CategoryAdapter.ViewHolder, position: Int) {
+        val projectAdapter = MiniProjectAdapter(category[position].projectList)
+
+        holder.titleName.setText(category[position].title)
+        holder.rvProject.adapter = projectAdapter
+
         val listener = View.OnClickListener { it ->
-            Toast.makeText(it.context, "${titles[position]}", Toast.LENGTH_SHORT).show()
+            Toast.makeText(it.context, category[position].title, Toast.LENGTH_SHORT).show()
         }
-        holder.bind(listener, titles[position])
+        holder.bind(listener)
     }
 
-    override fun getItemCount(): Int = titles.size
+    override fun getItemCount(): Int = category.size
 
 
 }

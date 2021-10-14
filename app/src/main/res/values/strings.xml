@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Corner-Library</string>
+    <string name="project_logo">프로젝트 로고</string>
 </resources>
