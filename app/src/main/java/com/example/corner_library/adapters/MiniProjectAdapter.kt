@@ -10,8 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.corner_library.R
 import com.example.corner_library.model.Project
 
-class MiniProjectAdapter(private val context: ArrayList<Project>) : RecyclerView.Adapter<MiniProjectAdapter.ViewHolder>() {
-    var projects = context
+class MiniProjectAdapter(private val projects: ArrayList<Project>) : RecyclerView.Adapter<MiniProjectAdapter.ViewHolder>() {
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         private var v: View = view;
@@ -33,10 +32,10 @@ class MiniProjectAdapter(private val context: ArrayList<Project>) : RecyclerView
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val listener = View.OnClickListener { it ->
-            Toast.makeText(it.context, "${projects[position].name}", Toast.LENGTH_SHORT).show()
+            Toast.makeText(it.context, projects[position].name, Toast.LENGTH_SHORT).show()
         }
-        holder.name.setText(projects[position].name)
-        holder.subject.setText(projects[position].subject)
+        holder.name.text = projects[position].name
+        holder.subject.text = projects[position].subject
         holder.logo.setImageResource(projects[position].logo)
         holder.bind(listener)
     }

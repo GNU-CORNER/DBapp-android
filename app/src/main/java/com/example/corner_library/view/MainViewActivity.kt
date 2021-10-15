@@ -11,9 +11,7 @@ import com.example.corner_library.model.Project
 
 class MainViewActivity : AppCompatActivity() {
     lateinit var categoryAdapter: CategoryAdapter
-
     val categories = ArrayList<Category>()
-
     val projects = ArrayList<Project>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,15 +36,8 @@ class MainViewActivity : AppCompatActivity() {
 
     private fun initData() {
 
-//        titles.add("기초설계프로젝트 PBL >")
-//        titles.add("소프트웨어설계 PBL >")
-//        titles.add("전공종합설계 PBL >")
-//        titles.add("자바스크립트 >")
-//        titles.add("안드로이드 >")
-//        titles.add("IOS >")
-
         projects.add(Project(name = "신선고", subject = "냉장고 관리", logo = R.drawable.logo2))
-        projects.add(Project(name = "신선고", subject = "냉장고 관리", logo = R.drawable.logo2))
+        projects.add(Project(name = "전인혁", subject = "인혁이 관리", logo = R.drawable.logo))
         projects.add(Project(name = "신선고", subject = "냉장고 관리", logo = R.drawable.logo2))
         projects.add(Project(name = "신선고", subject = "냉장고 관리", logo = R.drawable.logo2))
         projects.add(Project(name = "신선고", subject = "냉장고 관리", logo = R.drawable.logo2))
@@ -56,5 +47,11 @@ class MainViewActivity : AppCompatActivity() {
 
         val category2 = Category("소프트웨어설계 PBL >", projects)
         categories.add(category2)
+
+        val category3 = Category("전공종합설계 PBL >", projects)
+        categories.add(category3)
+
+        val category4 = Category("안드로이드 >", projects)
+        categories.add(category4)
     }
 }

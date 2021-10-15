@@ -11,6 +11,7 @@ import com.example.corner_library.R
 import com.example.corner_library.model.Category
 
 class CategoryAdapter(private val context: Context, val category: ArrayList<Category>) : RecyclerView.Adapter<CategoryAdapter.ViewHolder>() {
+//    위에 매개 변수 대신 이런 방법도 있음
 //    var category = ArrayList<Category>();
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -32,7 +33,7 @@ class CategoryAdapter(private val context: Context, val category: ArrayList<Cate
     override fun onBindViewHolder(holder: CategoryAdapter.ViewHolder, position: Int) {
         val projectAdapter = MiniProjectAdapter(category[position].projectList)
 
-        holder.titleName.setText(category[position].title)
+        holder.titleName.text = category[position].title
         holder.rvProject.adapter = projectAdapter
 
         val listener = View.OnClickListener { it ->
