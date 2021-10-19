@@ -3,8 +3,9 @@
     <style name="Theme.CornerLibrary" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/personal_color</item>
-        <item name="colorPrimaryVariant">@color/personal_color</item>
+        <item name="colorPrimaryVariant">@color/white</item>
         <item name="colorOnPrimary">@color/white</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="23">true</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/sub_color</item>
         <item name="colorSecondaryVariant">@color/sub_color</item>
