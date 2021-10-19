@@ -2,6 +2,7 @@ package com.example.corner_library.fragment
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.content.res.Resources
 import android.graphics.PorterDuff
 import android.os.Bundle
@@ -12,7 +13,11 @@ import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.*
 import androidx.appcompat.widget.Toolbar
+import androidx.core.content.ContextCompat
+import androidx.core.graphics.BlendModeColorFilterCompat
+import androidx.core.graphics.BlendModeCompat
 import com.example.corner_library.R
+import com.example.corner_library.view.SearchResultActivity
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
@@ -32,11 +37,11 @@ class SearchFragment(val itemClick: (Int) -> Unit) : BottomSheetDialogFragment()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val toolbar: Toolbar = view.findViewById(R.id.toolbar)
+        val toolbar: Toolbar = view.findViewById(R.id.search_toolbar)
         val editText: EditText = view.findViewById(R.id.edit_text)
         val bottomSheetLayout: View = view.findViewById(R.id.bottom_sheet_layout)
         toolbar.setNavigationIcon(R.drawable.back_icon)
-        toolbar.navigationIcon?.setColorFilter(resources.getColor(R.color.personal_color), PorterDuff.Mode.SRC_ATOP)
+        toolbar.navigationIcon?.colorFilter = BlendModeColorFilterCompat.createBlendModeColorFilterCompat(ContextCompat.getColor(view.context, R.color.personal_color), BlendModeCompat.SRC_ATOP)
 
         dialog?.setOnShowListener { dialog ->
             val d = dialog as BottomSheetDialog
@@ -66,13 +71,16 @@ class SearchFragment(val itemClick: (Int) -> Unit) : BottomSheetDialogFragment()
 
         // 검색 입력창 관련 메소드
         editText.setOnKeyListener { view, keyCode, keyEvent ->
-            var handled = false
+            val handled = false
             val imm = activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
 
             // 엔터 또는 키보드 내 완료 버튼 눌렀을때 행동
             if (keyEvent.action == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER) {
                 imm.hideSoftInputFromWindow(editText.windowToken, 0)
-                Toast.makeText(context, "검색 입력 완료", Toast.LENGTH_SHORT).show()
+                val intent = Intent(context, SearchResultActivity::class.java)
+                startActivity(intent)
+                dialog?.dismiss()
+//                Toast.makeText(context, "검색 입력 완료", Toast.LENGTH_SHORT).show()
             }
 
             handled

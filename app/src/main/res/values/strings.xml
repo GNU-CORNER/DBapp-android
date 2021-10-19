@@ -1,6 +1,14 @@
 <resources>
     <string name="app_name">Corner-Library</string>
     <string name="project_logo">프로젝트 로고</string>
-<!-- TODO: Remove or change this placeholder text -->
+    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="search_bar_hint">검색할 키워드 또는 #태그를 입력하세요</string>
+
+    <string-array name="search_sort">
+        <item>최신순</item>
+        <item>오래된순</item>
+        <item>오름차순</item>
+        <item>내림차순</item>
+    </string-array>
 </resources>
