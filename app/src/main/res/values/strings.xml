@@ -11,4 +11,29 @@
         <item>오름차순</item>
         <item>내림차순</item>
     </string-array>
+
+    <!-- Actionbar Title -->
+    <string name="title_register">회원가입</string>
+
+    <!-- Button Text -->
+    <string name="btn_register_next">다음</string>
+
+    <!-- Register Text -->
+    <string name="title_name_input">안녕하세요!\n이름이 어떻게 되시나요?</string>
+    <string name="title_email_input">경상대 웹메일 주소를\n입력해 주세요.</string>
+    <string name="title_password_input">비밀번호를\n입력해 주세요.</string>
+    <string name="title_email_auth">이메일의 인증 링크를 통해\n가입을 완료하세요!</string>
+    <string name="body_email_auth">이제 프로젝트를 구경해보세요!</string>
+    <string name="hint_name_input">이름</string>
+    <string name="hint_email_input">이메일</string>
+    <string name="hint_password_input">비밀번호</string>
+    <string name="hint_password_confirm_input">비밀번호 확인</string>
+    <string name="text_indicator">%d / %d</string>
+
+    <!-- TextInput Error Message -->
+    <string name="name_input_message">이름을 입력해주세요.</string>
+    <string name="email_input_message">이메일을 입력해주세요.</string>
+    <string name="email_regex_message">이메일 형식을 맞춰주세요.(아이디@gnu.ac.kr)</string>
+    <string name="password_input_message">비밀번호를 입력해주세요.</string>
+    <string name="password_not_equal_message">두 비밀번호가 일치하지 않습니다.</string>
 </resources>
