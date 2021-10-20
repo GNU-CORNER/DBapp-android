@@ -28,6 +28,9 @@
         <activity
             android:name=".MainActivity"
             android:exported="true" />
+        <activity
+            android:name=".view.RegisterActivity"
+            android:windowSoftInputMode="adjustPan" />
     </application>
 
 </manifest>
