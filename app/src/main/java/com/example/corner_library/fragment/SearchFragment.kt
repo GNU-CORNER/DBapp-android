@@ -41,7 +41,6 @@ class SearchFragment(val itemClick: (Int) -> Unit) : BottomSheetDialogFragment()
         val editText: EditText = view.findViewById(R.id.edit_text)
         val bottomSheetLayout: View = view.findViewById(R.id.bottom_sheet_layout)
         toolbar.setNavigationIcon(R.drawable.back_icon)
-        toolbar.navigationIcon?.colorFilter = BlendModeColorFilterCompat.createBlendModeColorFilterCompat(ContextCompat.getColor(view.context, R.color.personal_color), BlendModeCompat.SRC_ATOP)
 
         dialog?.setOnShowListener { dialog ->
             val d = dialog as BottomSheetDialog
