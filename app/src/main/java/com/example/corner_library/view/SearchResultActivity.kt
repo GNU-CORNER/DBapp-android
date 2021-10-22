@@ -31,8 +31,6 @@ class SearchResultActivity : AppCompatActivity() {
         val spinner = findViewById<Spinner>(R.id.dropdown_sort)
 
         toolbar.setNavigationIcon(R.drawable.back_icon)
-        toolbar.navigationIcon?.colorFilter = BlendModeColorFilterCompat.createBlendModeColorFilterCompat(
-            ContextCompat.getColor(this, R.color.personal_color), BlendModeCompat.SRC_ATOP)
 
         initData()
 
