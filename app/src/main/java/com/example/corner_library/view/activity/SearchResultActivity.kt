@@ -1,4 +1,4 @@
-package com.example.corner_library.view
+package com.example.corner_library.view.activity
 
 import android.content.Context
 import android.content.Intent
@@ -9,9 +9,6 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.*
 import androidx.appcompat.widget.Toolbar
-import androidx.core.content.ContextCompat
-import androidx.core.graphics.BlendModeColorFilterCompat
-import androidx.core.graphics.BlendModeCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.corner_library.R
 import com.example.corner_library.adapters.SearchResultProjectAdapter

@@ -1,22 +1,22 @@
-package com.example.corner_library.view
+package com.example.corner_library.view.activity
 
 import android.os.Bundle
 import android.view.MenuItem
-import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.content.res.AppCompatResources
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
-import androidx.fragment.app.findFragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.example.corner_library.R
 import com.example.corner_library.databinding.ActivityRegisterBinding
+import com.example.corner_library.view.fragment.EmailAuthFragment
+import com.example.corner_library.view.fragment.EmailInputFragment
+import com.example.corner_library.view.fragment.NameInputFragment
+import com.example.corner_library.view.fragment.PasswordInputFragment
 import com.example.corner_library.viewmodel.RegisterViewModel
-import com.google.android.material.textfield.TextInputLayout
 
 class RegisterActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRegisterBinding
@@ -27,7 +27,11 @@ class RegisterActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        init()
+        setBinding()
+        setSupportActionBar(binding.toolbar)
+        supportActionBar!!.apply {
+            displayOptions = ActionBar.DISPLAY_HOME_AS_UP
+        }
         setViewPager()
     }
 
@@ -52,17 +56,12 @@ class RegisterActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
-    private fun init() {
+    private fun setBinding() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_register)
 
         binding.lifecycleOwner = this
         binding.view = this
         binding.viewModel = viewModel
-
-        setSupportActionBar(binding.toolbar)
-        supportActionBar!!.apply {
-            displayOptions = ActionBar.DISPLAY_HOME_AS_UP
-        }
     }
 
     private fun setViewPager() {

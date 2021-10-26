@@ -2,13 +2,13 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".view.RegisterActivity">
+    tools:context=".view.activity.RegisterActivity">
 
     <data>
 
         <variable
             name="view"
-            type="com.example.corner_library.view.RegisterActivity" />
+            type="com.example.corner_library.view.activity.RegisterActivity" />
 
         <variable
             name="viewModel"
