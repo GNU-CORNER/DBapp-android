@@ -1,4 +1,4 @@
-package com.example.corner_library.view
+package com.example.corner_library.view.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater

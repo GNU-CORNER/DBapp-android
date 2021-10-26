@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Corner-Library</string>
+    <string name="app_name">Corner Archive</string>
     <string name="project_logo">프로젝트 로고</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -17,6 +17,13 @@
 
     <!-- Button Text -->
     <string name="btn_register_next">다음</string>
+    <string name="btn_login">LOGIN</string>
+    <string name="btn_find_account">아이디/비밀번호 찾기</string>
+    <string name="btn_register">회원가입</string>
+
+    <!-- Login Text -->
+    <string name="hint_email_login">이메일 아이디</string>
+    <string name="hint_password_login">비밀번호</string>
 
     <!-- Register Text -->
     <string name="title_name_input">안녕하세요!\n이름이 어떻게 되시나요?</string>

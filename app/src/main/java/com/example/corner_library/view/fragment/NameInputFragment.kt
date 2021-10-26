@@ -1,4 +1,4 @@
-package com.example.corner_library.view
+package com.example.corner_library.view.fragment
 
 import android.content.Context
 import android.os.Bundle
@@ -7,14 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
-import android.widget.EditText
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.example.corner_library.R
 import com.example.corner_library.databinding.FragmentNameInputBinding
 import com.example.corner_library.viewmodel.RegisterViewModel
-import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 
 class NameInputFragment : Fragment() {

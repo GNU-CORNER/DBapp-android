@@ -1,4 +1,4 @@
-package com.example.corner_library.view
+package com.example.corner_library.view.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -8,18 +8,18 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.corner_library.R
 import com.example.corner_library.adapters.CategoryAdapter
-import com.example.corner_library.fragment.SearchFragment
+import com.example.corner_library.view.fragment.SearchFragment
 import com.example.corner_library.model.Category
 import com.example.corner_library.model.Project
 
-class MainViewActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity() {
     lateinit var categoryAdapter: CategoryAdapter
     val categories = ArrayList<Category>()
     val projects = ArrayList<Project>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main_view)
+        setContentView(R.layout.activity_main)
 
         initData()
 

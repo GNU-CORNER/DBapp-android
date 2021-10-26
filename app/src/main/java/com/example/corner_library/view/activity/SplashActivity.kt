@@ -1,22 +1,25 @@
-package com.example.corner_library.view
+package com.example.corner_library.view.activity
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import android.os.Looper
+import androidx.appcompat.app.AppCompatActivity
 import com.example.corner_library.R
 
 class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
-        Handler().postDelayed({
-            startActivity(Intent(this, MainViewActivity::class.java))
+
+        Handler(Looper.getMainLooper()).postDelayed({
+            startActivity(Intent(this, LoginActivity::class.java))
             finish()
         }, 2000)
     }
 
-    override fun onBackPressed() {
-        super.onBackPressed()
+    override fun onPause() {
+        super.onPause()
+        overridePendingTransition(0, 0)
     }
 }

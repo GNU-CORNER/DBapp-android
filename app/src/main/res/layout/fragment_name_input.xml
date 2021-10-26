@@ -2,13 +2,13 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".view.NameInputFragment">
+    tools:context=".view.fragment.NameInputFragment">
 
     <data>
 
         <variable
             name="view"
-            type="com.example.corner_library.view.NameInputFragment" />
+            type="com.example.corner_library.view.fragment.NameInputFragment" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

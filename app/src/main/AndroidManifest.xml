@@ -10,10 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CornerLibrary">
         <activity
-            android:name=".view.SearchResultActivity"
+            android:name=".view.activity.SearchResultActivity"
             android:exported="true" />
         <activity
-            android:name=".view.SplashActivity"
+            android:name=".view.activity.SplashActivity"
             android:exported="true"
             android:theme="@style/SplashTheme">
             <intent-filter>
@@ -23,13 +23,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".view.MainViewActivity"
+            android:name=".view.activity.MainActivity"
             android:exported="true" />
         <activity
-            android:name=".MainActivity"
+            android:name=".view.activity.LoginActivity"
             android:exported="true" />
         <activity
-            android:name=".view.RegisterActivity"
+            android:name=".view.activity.RegisterActivity"
             android:windowSoftInputMode="adjustPan" />
     </application>
 
