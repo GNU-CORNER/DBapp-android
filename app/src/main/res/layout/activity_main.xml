@@ -23,7 +23,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:src="@drawable/logo2" />
+                android:layout_marginVertical="50dp"
+                android:src="@drawable/main_app_logo" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/search_bar"
