@@ -13,10 +13,11 @@
     </string-array>
 
     <!-- Actionbar Title -->
-    <string name="title_register">회원가입</string>
+    <string name="title_register">SIGN UP</string>
 
     <!-- Button Text -->
     <string name="btn_register_next">다음</string>
+    <string name="btn_register_complete">완료</string>
     <string name="btn_login">Login</string>
     <string name="btn_find_account">forgot your password?</string>
     <string name="btn_register">SIGN UP</string>
@@ -26,11 +27,11 @@
     <string name="hint_password_login">PW</string>
 
     <!-- Register Text -->
-    <string name="title_name_input">안녕하세요!\n이름이 어떻게 되시나요?</string>
-    <string name="title_email_input">경상대 웹메일 주소를\n입력해 주세요.</string>
-    <string name="title_password_input">비밀번호를\n입력해 주세요.</string>
+    <string name="title_name_input">이름을\n입력해주세요</string>
+    <string name="title_email_input">경상대 웹메일 주소를\n입력해 주세요</string>
+    <string name="title_password_input">사용할 비밀번호를\n입력해 주세요</string>
     <string name="title_email_auth">이메일의 인증 링크를 통해\n가입을 완료하세요!</string>
-    <string name="body_email_auth">이제 프로젝트를 구경해보세요!</string>
+    <string name="body_email_auth">이제 프로젝트를 구경해보세요</string>
     <string name="hint_name_input">이름</string>
     <string name="hint_email_input">이메일</string>
     <string name="hint_password_input">비밀번호</string>

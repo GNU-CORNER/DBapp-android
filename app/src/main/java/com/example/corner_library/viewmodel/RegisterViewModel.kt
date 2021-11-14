@@ -8,6 +8,10 @@ class RegisterViewModel : ViewModel() {
     private val _currentPage = MutableLiveData<Int>()
 
     val currentPage: LiveData<Int> = _currentPage
+    val name = MutableLiveData<String>()
+    val email = MutableLiveData<String>()
+    val password = MutableLiveData<String>()
+    val passwordConfirm = MutableLiveData<String>()
 
     init {
         _currentPage.value = 1

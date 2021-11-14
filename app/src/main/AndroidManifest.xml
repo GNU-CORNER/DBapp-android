@@ -28,10 +28,8 @@
         <activity
             android:name=".view.activity.LoginActivity"
             android:exported="true"
-            android:theme="@style/SplashTheme"/>
-        <activity
-            android:name=".view.activity.RegisterActivity"
-            android:windowSoftInputMode="adjustPan" />
+            android:theme="@style/SplashTheme" />
+        <activity android:name=".view.activity.RegisterActivity" />
     </application>
 
 </manifest>
