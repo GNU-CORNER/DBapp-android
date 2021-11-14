@@ -2,6 +2,8 @@ package com.example.corner_library.view.activity
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.animation.AnimationUtils
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -21,6 +23,11 @@ class LoginActivity : AppCompatActivity() {
 
         binding.splashLogo.startAnimation(logoAni)
         binding.inputInfo.startAnimation(inputAni)
+
+        Handler(Looper.getMainLooper()).postDelayed({
+            binding.splashLogo.setImageResource(R.drawable.login_app_logo)
+        }, 1300)
+
     }
 
     private fun setBinding() {
