@@ -6,19 +6,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.airbnb.lottie.LottieAnimationView
-            android:id="@+id/lav_mail_auth"
-            android:layout_width="0dp"
-            android:layout_height="200dp"
-            android:layout_marginBottom="24dp"
-            app:layout_constraintEnd_toEndOf="@id/tv_title"
-            app:layout_constraintStart_toStartOf="@id/tv_title"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/tv_title"
-            app:lottie_autoPlay="true"
-            app:lottie_loop="true"
-            app:lottie_rawRes="@raw/anim_mail_auth" />
-
         <TextView
             android:id="@+id/tv_title"
             android:layout_width="wrap_content"
@@ -26,19 +13,23 @@
             android:gravity="center"
             android:text="@string/title_email_auth"
             android:textAppearance="@style/Text.Bold_24dp_Black"
+            android:textColor="@color/personal_color"
             app:layout_constraintBottom_toTopOf="@id/tv_body"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed" />
 
         <TextView
             android:id="@+id/tv_body"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
             android:fontFamily="@font/roboto_bold"
             android:gravity="center"
-            android:layout_marginTop="24dp"
             android:text="@string/body_email_auth"
-            android:textColor="@android:color/darker_gray"
+            android:textColor="@color/sub_color"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_title" />

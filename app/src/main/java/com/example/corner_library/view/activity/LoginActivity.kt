@@ -35,6 +35,25 @@ class LoginActivity : AppCompatActivity() {
         binding.view = this
     }
 
+    // 로그인
+    fun startLogin() {
+//        FirebaseAuth
+//            .getInstance()
+//            .signInWithEmailAndPassword(이메일, 비밀번호)
+//            .addOnCompleteListener { task ->
+//                if (task.isSuccessful) {
+//                    if (FirebaseAuth.getInstance().currentUser?.isEmailVerified!!) {
+//                        Toast.makeText(this, "로그인 성공", Toast.LENGTH_SHORT).show()
+//                    } else {
+//                        Toast.makeText(this, "이메일 인증 필요", Toast.LENGTH_SHORT).show()
+//                    }
+//                } else {
+//                    Log.i("LoginActivity", task.exception?.message!!)
+//                }
+//            }
+    }
+
+    // 회원가입 이동
     fun startRegister() {
         startActivity(Intent(this, RegisterActivity::class.java))
     }

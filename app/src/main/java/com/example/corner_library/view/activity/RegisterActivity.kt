@@ -1,15 +1,15 @@
 package com.example.corner_library.view.activity
 
+import android.content.Context
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.inputmethod.InputMethodManager
+import android.widget.EditText
 import androidx.activity.viewModels
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
-import androidx.viewpager2.adapter.FragmentStateAdapter
-import androidx.viewpager2.widget.ViewPager2
+import androidx.lifecycle.Observer
 import com.example.corner_library.R
 import com.example.corner_library.databinding.ActivityRegisterBinding
 import com.example.corner_library.view.fragment.EmailAuthFragment
@@ -21,31 +21,39 @@ import com.example.corner_library.viewmodel.RegisterViewModel
 class RegisterActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRegisterBinding
     private val viewModel: RegisterViewModel by viewModels()
-    private lateinit var viewPagerAdapter: FragmentStateAdapter
-    private lateinit var viewPager: ViewPager2
+    private val keyboardController by lazy {
+        getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         setBinding()
         setSupportActionBar(binding.toolbar)
-        supportActionBar!!.apply {
-            displayOptions = ActionBar.DISPLAY_HOME_AS_UP
-        }
-        setViewPager()
+        setObserver()
+
+        supportActionBar!!.displayOptions = ActionBar.DISPLAY_HOME_AS_UP
     }
 
     override fun onBackPressed() {
-        if (viewPager.currentItem == 0) {
-            super.onBackPressed()
-        } else {
-            viewModel.prevPage()
+        when (supportFragmentManager.backStackEntryCount) {
+            1 -> {
+                finish()
+            }
+            RegisterViewModel.NUM_PAGES -> {
+
+            }
+            else -> {
+                supportFragmentManager.popBackStackImmediate()
+                viewModel.prevPage()
+            }
         }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == android.R.id.home) {
-            if (viewPager.currentItem > 0) {
+            if (supportFragmentManager.backStackEntryCount > 1) {
+                supportFragmentManager.popBackStack()
                 viewModel.prevPage()
             } else {
                 finish()
@@ -58,33 +66,57 @@ class RegisterActivity : AppCompatActivity() {
 
     private fun setBinding() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_register)
-
         binding.lifecycleOwner = this
         binding.view = this
         binding.viewModel = viewModel
     }
 
-    private fun setViewPager() {
-        viewPager = binding.vpContainer
-        viewPagerAdapter = ViewPagerAdapter(this)
+    private fun setObserver() {
+        // 페이지 변경에 따른 프래그먼트 변경
+        viewModel.currentPage.observe(this, Observer {
+            if (it != supportFragmentManager.backStackEntryCount) {
+                val fragment = when (it) {
+                    1 -> NameInputFragment()
+                    2 -> EmailInputFragment()
+                    3 -> PasswordInputFragment()
+                    else -> EmailAuthFragment()
+                }
 
-        viewPager.apply {
-            adapter = viewPagerAdapter
-            isUserInputEnabled = false
-            offscreenPageLimit = 1
+                supportFragmentManager.beginTransaction().apply {
+                    setCustomAnimations(
+                        R.anim.enter_from_right,
+                        R.anim.exit_to_left,
+                        R.anim.enter_from_left,
+                        R.anim.exit_to_right
+                    )
+                    replace(R.id.fl_container, fragment)
+                    addToBackStack(null)
+                    commit()
+                }
+            }
+        })
+    }
+
+    // 현재 프래그먼트의 onButtonClick 메소드 실행
+    fun onButtonClick() {
+        val fragment = supportFragmentManager.fragments.last()
+
+        when (viewModel.currentPage.value) {
+            1 -> (fragment as NameInputFragment).onButtonClick()
+            2 -> (fragment as EmailInputFragment).onButtonClick()
+            3 -> (fragment as PasswordInputFragment).onButtonClick()
+            4 -> (fragment as EmailAuthFragment).onButtonClick()
         }
     }
 
-    private inner class ViewPagerAdapter(fa: FragmentActivity) : FragmentStateAdapter(fa) {
-        override fun getItemCount(): Int = RegisterViewModel.NUM_PAGES
+    // 키보드 보이기
+    fun showKeyboard(editText: EditText) {
+        editText.requestFocus()
+        keyboardController.showSoftInput(editText, InputMethodManager.SHOW_IMPLICIT)
+    }
 
-        override fun createFragment(position: Int): Fragment {
-            return when (position) {
-                0 -> NameInputFragment()
-                1 -> EmailInputFragment()
-                2 -> PasswordInputFragment()
-                else -> EmailAuthFragment()
-            }
-        }
+    // 키보드 숨김
+    fun hideKeyboard(editText: EditText) {
+        keyboardController.hideSoftInputFromWindow(editText.windowToken, 0)
     }
 }

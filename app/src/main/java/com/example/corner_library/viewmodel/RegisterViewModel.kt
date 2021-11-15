@@ -25,6 +25,11 @@ class RegisterViewModel : ViewModel() {
         if (_currentPage.value!! > 1) _currentPage.value = _currentPage.value?.dec()
     }
 
+    fun signUp() {
+        //TODO 서버의 회원가입 API 통신 추가
+        nextPage()
+    }
+
     companion object {
         const val NUM_PAGES = 4
     }
