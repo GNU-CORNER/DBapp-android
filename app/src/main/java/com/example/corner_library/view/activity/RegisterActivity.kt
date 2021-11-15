@@ -53,7 +53,7 @@ class RegisterActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == android.R.id.home) {
             if (supportFragmentManager.backStackEntryCount > 1) {
-                supportFragmentManager.popBackStack()
+                supportFragmentManager.popBackStackImmediate()
                 viewModel.prevPage()
             } else {
                 finish()
