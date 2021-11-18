@@ -45,10 +45,10 @@ class MainActivity : AppCompatActivity() {
 
     private fun initData() {
 
+        projects.add(Project(name = "신선고라너리낭리ㅏㅜㅏㅣㅁ러;ㅣㄴ알;ㅏㅁㅇ너라ㅣ어ㅏㅣㄹㅇㄴ", subject = "냉장고 관리", logo = R.drawable.logo2))
+        projects.add(Project(name = "전인혁", subject = "인혁이 관리 ㄹㄴ아ㅓㅣ롱노리ㅏㅓ모니ㅓ로언머ㅏ로어ㅏㄴ모리ㅏㅁㄴ오리ㅏㅓ옴나ㅓ롱니ㅏㅓㅗㄹ미ㅗㅓ롱머ㅏ니ㅗㄹ아ㅣㅓㅁ뇌라", logo = R.drawable.logo3))
         projects.add(Project(name = "신선고", subject = "냉장고 관리", logo = R.drawable.logo2))
-        projects.add(Project(name = "전인혁", subject = "인혁이 관리", logo = R.drawable.logo))
-        projects.add(Project(name = "신선고", subject = "냉장고 관리", logo = R.drawable.logo2))
-        projects.add(Project(name = "신선고", subject = "냉장고 관리", logo = R.drawable.logo2))
+        projects.add(Project(name = "로컬쉐어링", subject = "진주 배달앱", logo = R.drawable.logo3))
         projects.add(Project(name = "신선고", subject = "냉장고 관리", logo = R.drawable.logo2))
 
         val category1 = Category("기초설계프로젝트 PBL >", projects)

@@ -1,26 +1,29 @@
 package com.example.corner_library.adapters
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.corner_library.R
 import com.example.corner_library.model.Category
+import com.example.corner_library.view.activity.SearchResultActivity
 
 class CategoryAdapter(private val context: Context, val category: ArrayList<Category>) : RecyclerView.Adapter<CategoryAdapter.ViewHolder>() {
 //    위에 매개 변수 대신 이런 방법도 있음
 //    var category = ArrayList<Category>();
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        private var v: View = view;
         var titleName: TextView = itemView.findViewById(R.id.category_title)
+        private var moreBtn: TextView = itemView.findViewById(R.id.more_btn)
         var rvProject: RecyclerView = itemView.findViewById(R.id.mini_projects)
 
         fun bind(listener: View.OnClickListener) {
-            v.setOnClickListener(listener)
+            moreBtn.setOnClickListener(listener)
         }
     }
 
@@ -37,7 +40,8 @@ class CategoryAdapter(private val context: Context, val category: ArrayList<Cate
         holder.rvProject.adapter = projectAdapter
 
         val listener = View.OnClickListener { it ->
-            Toast.makeText(it.context, category[position].title, Toast.LENGTH_SHORT).show()
+            val intent = Intent(context, SearchResultActivity::class.java)
+            startActivity(context, intent, null)
         }
         holder.bind(listener)
     }

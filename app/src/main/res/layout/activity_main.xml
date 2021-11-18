@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingHorizontal="25dp"
+    android:paddingHorizontal="20dp"
     android:orientation="vertical"
     tools:context=".view.activity.MainActivity">
 
@@ -23,7 +23,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:src="@drawable/logo2" />
+                android:layout_marginVertical="50dp"
+                android:src="@drawable/main_app_logo" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/search_bar"
@@ -31,7 +32,7 @@
                 android:layout_height="45dp"
                 android:background="@drawable/search_box"
                 android:drawableRight="@drawable/search_logo"
-                android:layout_marginVertical="10dp"
+                android:layout_marginBottom="25dp"
                 android:paddingRight="10dp" />
 
             <androidx.recyclerview.widget.RecyclerView
