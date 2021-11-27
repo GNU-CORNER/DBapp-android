@@ -1,52 +1,65 @@
 package com.example.corner_library.adapters
 
-import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import android.widget.Toast
 import androidx.core.content.ContextCompat.startActivity
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.corner_library.R
+import com.example.corner_library.databinding.ItemRvCategoryBinding
 import com.example.corner_library.model.Category
 import com.example.corner_library.view.activity.SearchResultActivity
 
-class CategoryAdapter(private val context: Context, val category: ArrayList<Category>) : RecyclerView.Adapter<CategoryAdapter.ViewHolder>() {
+class CategoryAdapter : ListAdapter<Category, CategoryAdapter.ViewHolder>(CategoryDiffUtil) {
 //    위에 매개 변수 대신 이런 방법도 있음
 //    var category = ArrayList<Category>();
 
-    inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        var titleName: TextView = itemView.findViewById(R.id.category_title)
-        private var moreBtn: TextView = itemView.findViewById(R.id.more_btn)
-        var rvProject: RecyclerView = itemView.findViewById(R.id.mini_projects)
+    inner class ViewHolder(private val binding: ItemRvCategoryBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        fun bind(category: Category) {
+            binding.category = category
+            binding.miniProjects.apply {
+                layoutManager =
+                    LinearLayoutManager(binding.root.context, LinearLayoutManager.HORIZONTAL, false)
+                adapter = MiniProjectAdapter()
+                setHasFixedSize(true)
+            }
+            binding.executePendingBindings()
 
-        fun bind(listener: View.OnClickListener) {
-            moreBtn.setOnClickListener(listener)
+            binding.moreBtn.setOnClickListener {
+                Intent(binding.root.context, SearchResultActivity::class.java).run {
+                    putExtra("Category", category)
+                    startActivity(binding.root.context, this, null)
+                }
+            }
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(context).inflate(R.layout.category_recycler_view, parent, false)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryAdapter.ViewHolder {
+        val layoutInflater = LayoutInflater.from(parent.context)
+        val binding = ItemRvCategoryBinding.inflate(layoutInflater, parent, false)
 
-        return ViewHolder(view)
+        return ViewHolder(binding)
+    }
+
+    override fun getItemViewType(position: Int): Int {
+        return R.layout.item_rv_category
     }
 
     override fun onBindViewHolder(holder: CategoryAdapter.ViewHolder, position: Int) {
-        val projectAdapter = MiniProjectAdapter(category[position].projectList)
-
-        holder.titleName.text = category[position].title
-        holder.rvProject.adapter = projectAdapter
-
-        val listener = View.OnClickListener { it ->
-            val intent = Intent(context, SearchResultActivity::class.java)
-            startActivity(context, intent, null)
-        }
-        holder.bind(listener)
+        holder.bind(getItem(position))
     }
 
-    override fun getItemCount(): Int = category.size
+    companion object CategoryDiffUtil : DiffUtil.ItemCallback<Category>() {
+        override fun areItemsTheSame(oldItem: Category, newItem: Category): Boolean {
+            return oldItem == newItem
+        }
 
-
+        override fun areContentsTheSame(oldItem: Category, newItem: Category): Boolean {
+            return oldItem.title == newItem.title && oldItem.projectList == newItem.projectList
+        }
+    }
 }

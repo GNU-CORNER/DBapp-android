@@ -1,66 +1,44 @@
 package com.example.corner_library.view.activity
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
-import android.widget.Button
+import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.example.corner_library.R
 import com.example.corner_library.adapters.CategoryAdapter
+import com.example.corner_library.databinding.ActivityMainBinding
 import com.example.corner_library.view.fragment.SearchFragment
-import com.example.corner_library.model.Category
-import com.example.corner_library.model.Project
+import com.example.corner_library.viewmodel.MainViewModel
 
 class MainActivity : AppCompatActivity() {
-    lateinit var categoryAdapter: CategoryAdapter
-    val categories = ArrayList<Category>()
-    val projects = ArrayList<Project>()
+    private lateinit var binding: ActivityMainBinding
+    private val viewModel: MainViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
 
-        initData()
-
-        val rvCategories = findViewById<RecyclerView>(R.id.categories)
-        val searchBtn = findViewById<Button>(R.id.search_bar)
-        categoryAdapter = CategoryAdapter(this, categories)
-        rvCategories.adapter = categoryAdapter
-        val categoryLayoutManager = object: LinearLayoutManager(this) {
-            override fun canScrollVertically(): Boolean {
-                return false;
-            }
-        }
-
-        rvCategories.layoutManager = categoryLayoutManager
-
-        searchBtn.setOnClickListener(View.OnClickListener {
-            val searchFragment : SearchFragment = SearchFragment {
-
-            }
-            searchFragment.show(supportFragmentManager, searchFragment.tag)
-        })
+        setBinding()
+        setRecyclerView()
     }
 
-    private fun initData() {
+    private fun setBinding() {
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        binding.lifecycleOwner = this
+        binding.view = this
+        binding.viewModel = viewModel
+        setContentView(binding.root)
+    }
 
-        projects.add(Project(name = "신선고라너리낭리ㅏㅜㅏㅣㅁ러;ㅣㄴ알;ㅏㅁㅇ너라ㅣ어ㅏㅣㄹㅇㄴ", subject = "냉장고 관리", logo = R.drawable.logo2))
-        projects.add(Project(name = "전인혁", subject = "인혁이 관리 ㄹㄴ아ㅓㅣ롱노리ㅏㅓ모니ㅓ로언머ㅏ로어ㅏㄴ모리ㅏㅁㄴ오리ㅏㅓ옴나ㅓ롱니ㅏㅓㅗㄹ미ㅗㅓ롱머ㅏ니ㅗㄹ아ㅣㅓㅁ뇌라", logo = R.drawable.logo3))
-        projects.add(Project(name = "신선고", subject = "냉장고 관리", logo = R.drawable.logo2))
-        projects.add(Project(name = "로컬쉐어링", subject = "진주 배달앱", logo = R.drawable.logo3))
-        projects.add(Project(name = "신선고", subject = "냉장고 관리", logo = R.drawable.logo2))
+    private fun setRecyclerView() {
+        binding.categories.apply {
+            layoutManager =
+                LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
+            adapter = CategoryAdapter()
+            setHasFixedSize(true)
+        }
+    }
 
-        val category1 = Category("기초설계프로젝트 PBL >", projects)
-        categories.add(category1)
-
-        val category2 = Category("소프트웨어설계 PBL >", projects)
-        categories.add(category2)
-
-        val category3 = Category("전공종합설계 PBL >", projects)
-        categories.add(category3)
-
-        val category4 = Category("안드로이드 >", projects)
-        categories.add(category4)
+    fun startSearchFragment() {
+        val searchFragment = SearchFragment()
+        searchFragment.show(supportFragmentManager, searchFragment.tag)
     }
 }
