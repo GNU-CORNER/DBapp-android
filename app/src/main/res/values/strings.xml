@@ -14,6 +14,7 @@
 
     <!-- Actionbar Title -->
     <string name="title_register">SIGN UP</string>
+    <string name="title_search">검색</string>
 
     <!-- Button Text -->
     <string name="btn_register_next">다음</string>
@@ -44,4 +45,8 @@
     <string name="email_regex_message">이메일 형식을 맞춰주세요.(아이디@gnu.ac.kr)</string>
     <string name="password_input_message">비밀번호를 입력해주세요.</string>
     <string name="password_not_equal_message">두 비밀번호가 일치하지 않습니다.</string>
+
+    <!-- Project Text -->
+    <string name="title_category">%s ></string>
+    <string name="view_all_message">전체 보기</string>
 </resources>
