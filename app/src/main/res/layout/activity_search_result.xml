@@ -1,62 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context=".view.activity.SearchResultActivity">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/search_result_toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        style="@style/Widget.MaterialComponents.Toolbar">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="검색 결과"
-            android:textSize="24dp"
-            android:textStyle="bold"
-            android:textColor="@color/personal_color"/>
-    </androidx.appcompat.widget.Toolbar>
+    <data>
 
+        <variable
+            name="view"
+            type="com.example.corner_library.view.activity.SearchResultActivity" />
+        <variable
+            name="viewModel"
+            type="com.example.corner_library.viewmodel.MainViewModel" />
+    </data>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:paddingTop="20dp"
-        android:paddingHorizontal="20dp">
-
-        <EditText
-            android:id="@+id/search_edit_text"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:paddingHorizontal="15dp"
-            android:background="@drawable/search_box"
-            android:drawableRight="@drawable/search_logo"
-            android:inputType="text"
-            android:hint="@string/search_bar_hint"
-            android:textSize="15dp"/>
-
-        <Spinner
-            android:id="@+id/dropdown_sort"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:layout_marginTop="30dp"
-            android:entries="@array/search_sort"/>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/projects"
+        android:orientation="vertical">
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            style="@style/Widget.MaterialComponents.Toolbar">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="검색 결과"
+                android:textSize="24dp"
+                android:textStyle="bold"
+                android:textColor="@color/personal_color"/>
+        </androidx.appcompat.widget.Toolbar>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:orientation="vertical"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/project_card" />
+            android:paddingTop="20dp"
+            android:paddingHorizontal="20dp">
 
+            <EditText
+                android:id="@+id/search_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:paddingHorizontal="15dp"
+                android:background="@drawable/search_box"
+                android:drawableRight="@drawable/search_logo"
+                android:inputType="text"
+                android:hint="@string/search_bar_hint"
+                android:textSize="15dp"/>
+
+            <Spinner
+                android:id="@+id/dropdown_sort"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginTop="30dp"
+                android:entries="@array/search_sort"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/projects"
+                projects="@{viewModel.projects}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/project_card" />
+
+        </LinearLayout>
     </LinearLayout>
-
-</LinearLayout>
+</layout>

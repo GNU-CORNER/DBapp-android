@@ -24,7 +24,7 @@ class CategoryAdapter : ListAdapter<Category, CategoryAdapter.ViewHolder>(Catego
             binding.miniProjects.apply {
                 layoutManager =
                     LinearLayoutManager(binding.root.context, LinearLayoutManager.HORIZONTAL, false)
-                adapter = MiniProjectAdapter()
+                adapter = MiniProjectAdapter("main")
                 setHasFixedSize(true)
             }
             binding.executePendingBindings()
