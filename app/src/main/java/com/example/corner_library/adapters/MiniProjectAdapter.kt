@@ -1,20 +1,35 @@
 package com.example.corner_library.adapters
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.corner_library.databinding.ItemRvProjectMiniBinding
+import com.example.corner_library.databinding.ProjectCardBinding
 import com.example.corner_library.model.Project
 
-class MiniProjectAdapter : ListAdapter<Project, MiniProjectAdapter.ViewHolder>(ProjectDiffUtil) {
+class MiniProjectAdapter(val pageName: String) : ListAdapter<Project, MiniProjectAdapter.ViewHolder>(
+    ProjectDiffUtil
+) {
 
-    inner class ViewHolder(private val binding: ItemRvProjectMiniBinding) :
+    inner class ViewHolder(private val binding: ViewDataBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(project: Project) {
-            binding.project = project
-            binding.mainProjectLogo.setImageResource(project.logo)
+            if(pageName == "main"){
+                binding as ItemRvProjectMiniBinding
+                binding.project = project
+                binding.projectLogo.setImageResource(project.logo)
+            }
+            else{
+                binding as ProjectCardBinding
+                binding.project = project
+                binding.projectLogo.setImageResource(project.logo)
+            }
+
+
             binding.executePendingBindings()
 
             binding.root.setOnClickListener {
@@ -28,7 +43,10 @@ class MiniProjectAdapter : ListAdapter<Project, MiniProjectAdapter.ViewHolder>(P
         viewType: Int
     ): MiniProjectAdapter.ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
-        val binding = ItemRvProjectMiniBinding.inflate(layoutInflater, parent, false)
+        val binding = if(pageName == "main")
+            ItemRvProjectMiniBinding.inflate(layoutInflater, parent, false)
+        else
+            ProjectCardBinding.inflate(layoutInflater, parent, false)
 
         return ViewHolder(binding)
     }

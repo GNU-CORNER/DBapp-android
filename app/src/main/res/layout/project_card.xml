@@ -1,44 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <LinearLayout
+    <data>
+
+        <variable
+            name="project"
+            type="com.example.corner_library.model.Project" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:background="@drawable/project_card_bg"
-        android:paddingVertical="20dp"
-        android:paddingHorizontal="10dp">
-        <ImageView
-            android:id="@+id/search_project_logo"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:src="@color/black"
-            android:contentDescription="@string/project_logo" />
-
+        android:layout_height="wrap_content">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
+            android:orientation="horizontal"
+            android:background="@drawable/project_card_bg"
+            android:paddingVertical="20dp"
             android:paddingHorizontal="10dp">
-            <TextView
-                android:id="@+id/search_project_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:text="이름"
-                android:textSize="20dp"
-                android:textColor="@color/black"
-                android:textStyle="bold"/>
+            <ImageView
+                android:id="@+id/project_logo"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@color/black"
+                android:contentDescription="@string/project_logo" />
 
-            <TextView
-                android:id="@+id/search_project_subject"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="주제"/>
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:paddingHorizontal="10dp">
+                <TextView
+                    android:id="@+id/project_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:ellipsize="end"
+                    android:lines="1"
+                    android:text="@{project.name}"
+                    android:textSize="20dp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/project_subject"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:lines="2"
+                    android:text="@{project.subject}"/>
+            </LinearLayout>
+
         </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </LinearLayout>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

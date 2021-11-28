@@ -22,13 +22,13 @@
             android:paddingVertical="10dp">
 
             <ImageView
-                android:id="@+id/main_project_logo"
+                android:id="@+id/project_logo"
                 android:layout_width="120dp"
                 android:layout_height="120dp"
                 android:contentDescription="@string/project_logo" />
 
             <TextView
-                android:id="@+id/main_project_name"
+                android:id="@+id/project_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
@@ -40,7 +40,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/main_project_subject"
+                android:id="@+id/project_subject"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
