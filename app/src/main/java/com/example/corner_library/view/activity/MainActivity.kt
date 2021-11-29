@@ -1,12 +1,12 @@
 package com.example.corner_library.view.activity
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.corner_library.adapters.CategoryAdapter
 import com.example.corner_library.databinding.ActivityMainBinding
-import com.example.corner_library.view.fragment.SearchFragment
 import com.example.corner_library.viewmodel.MainViewModel
 
 class MainActivity : AppCompatActivity() {
@@ -38,7 +38,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun startSearchFragment() {
-        val searchFragment = SearchFragment()
-        searchFragment.show(supportFragmentManager, searchFragment.tag)
+        startActivity(Intent(this, SearchActivity::class.java))
     }
 }
