@@ -30,6 +30,7 @@
             android:exported="true"
             android:theme="@style/SplashTheme" />
         <activity android:name=".view.activity.RegisterActivity" />
+        <activity android:name=".view.activity.SearchActivity" />
     </application>
 
 </manifest>
