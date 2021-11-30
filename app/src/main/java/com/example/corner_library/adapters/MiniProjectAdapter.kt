@@ -1,8 +1,10 @@
 package com.example.corner_library.adapters
 
+import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat.startActivity
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -10,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.corner_library.databinding.ItemRvProjectMiniBinding
 import com.example.corner_library.databinding.ProjectCardBinding
 import com.example.corner_library.model.Project
+import com.example.corner_library.view.activity.ProjectDetailActivity
 
 class MiniProjectAdapter(val pageName: String) : ListAdapter<Project, MiniProjectAdapter.ViewHolder>(
     ProjectDiffUtil
@@ -33,7 +36,11 @@ class MiniProjectAdapter(val pageName: String) : ListAdapter<Project, MiniProjec
             binding.executePendingBindings()
 
             binding.root.setOnClickListener {
+                Log.d("디버그", project.toString())
 
+                val intent = Intent(binding.root.context, ProjectDetailActivity::class.java)
+                intent.putExtra("project", project)
+                startActivity(binding.root.context, intent, null)
             }
         }
     }
