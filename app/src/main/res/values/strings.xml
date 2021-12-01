@@ -24,7 +24,7 @@
     <string name="btn_register">SIGN UP</string>
 
     <!-- Login Text -->
-    <string name="hint_email_login">ID</string>
+    <string name="hint_email_login">EMAIL</string>
     <string name="hint_password_login">PW</string>
 
     <!-- Register Text -->
@@ -49,4 +49,14 @@
     <!-- Project Text -->
     <string name="title_category">%s ></string>
     <string name="view_all_message">전체 보기</string>
+
+    <!-- Login Exception Message -->
+    <string name="badly_format_exception">The email address is badly formatted.</string>
+    <string name="badly_format_message">이메일 형식으로 입력해주세요.</string>
+    <string name="no_user_exception">There is no user record corresponding to this identifier. The user may have been deleted.</string>
+    <string name="no_user_message">존재하지 않는 계정입니다.</string>
+    <string name="invalid_password_exception">The password is invalid or the user does not have a password.</string>
+    <string name="invalid_password_message">잘못된 비밀번호입니다.</string>
+    <string name="not_verified_link_message">인증 링크를 눌러주세요.</string>
+    <string name="empty_input_message">이메일과 비밀번호 모두 입력해주세요.</string>
 </resources>

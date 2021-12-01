@@ -5,10 +5,12 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.animation.AnimationUtils
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.example.corner_library.R
 import com.example.corner_library.databinding.ActivityLoginBinding
+import com.google.firebase.auth.FirebaseAuth
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
@@ -37,24 +39,47 @@ class LoginActivity : AppCompatActivity() {
 
     // 로그인
     fun startLogin() {
-//        FirebaseAuth
-//            .getInstance()
-//            .signInWithEmailAndPassword(이메일, 비밀번호)
-//            .addOnCompleteListener { task ->
-//                if (task.isSuccessful) {
-//                    if (FirebaseAuth.getInstance().currentUser?.isEmailVerified!!) {
-//                        Toast.makeText(this, "로그인 성공", Toast.LENGTH_SHORT).show()
-//                    } else {
-//                        Toast.makeText(this, "이메일 인증 필요", Toast.LENGTH_SHORT).show()
-//                    }
-//                } else {
-//                    Log.i("LoginActivity", task.exception?.message!!)
-//                }
-//            }
+        if (binding.etId.text.isEmpty() || binding.etPassword.text.isEmpty()) {
+            showToast(getString(R.string.empty_input_message))
+        } else {
+            FirebaseAuth
+                .getInstance()
+                .signInWithEmailAndPassword(
+                    binding.etId.text.toString(),
+                    binding.etPassword.text.toString()
+                )
+                .addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        if (FirebaseAuth.getInstance().currentUser?.isEmailVerified!!) {
+                            startActivity(Intent(this, MainActivity::class.java))
+                            finish()
+                        } else {
+                            showToast(getString(R.string.not_verified_link_message))
+                        }
+                    } else {
+                        when (task.exception!!.localizedMessage) {
+                            getString(R.string.badly_format_exception) -> {
+                                showToast(getString(R.string.badly_format_message))
+                            }
+                            getString(R.string.no_user_exception) -> {
+                                showToast(getString(R.string.no_user_message))
+                            }
+                            getString(R.string.invalid_password_exception) -> {
+                                showToast(getString(R.string.invalid_password_message))
+                            }
+                        }
+                    }
+                }
+        }
     }
 
     // 회원가입 이동
     fun startRegister() {
         startActivity(Intent(this, RegisterActivity::class.java))
+    }
+
+    // 토스트 메시지
+    private fun showToast(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 }
