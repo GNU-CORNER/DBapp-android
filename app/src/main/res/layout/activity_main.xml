@@ -50,7 +50,7 @@
                     android:background="@drawable/search_box"
                     android:contentDescription="@string/title_search"
                     android:drawableEnd="@drawable/search_logo"
-                    android:onClick="@{() -> view.startSearchFragment()}"
+                    android:onClick="@{() -> view.startSearchActivity()}"
                     android:paddingStart="0dp"
                     android:paddingEnd="10dp" />
 
