@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun startSearchFragment() {
+    fun startSearchActivity() {
         startActivity(Intent(this, SearchActivity::class.java))
     }
 }
