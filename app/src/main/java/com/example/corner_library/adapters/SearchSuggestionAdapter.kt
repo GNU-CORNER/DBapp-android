@@ -50,7 +50,7 @@ class SearchSuggestionAdapter(val clearText: () -> Unit) :
         }
 
         override fun areContentsTheSame(oldItem: Project, newItem: Project): Boolean {
-            return oldItem.name == newItem.name && oldItem.subject == newItem.subject
+            return oldItem.projectName == newItem.projectName && oldItem.subject == newItem.subject
         }
     }
 }

@@ -19,7 +19,7 @@ class ProjectDetailActivity : AppCompatActivity() {
 
         var project = intent.getParcelableExtra<Project>("project")
 
-        binding.text.text = project?.name
+        binding.text.text = project?.projectName
     }
 
     private fun setBinding() {
