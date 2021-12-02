@@ -29,6 +29,7 @@ class MainViewModel : ViewModel() {
             Tag(7, "자바스크립트"),
             Tag(8, "static"),
             Tag(9, "React"),
+            Tag(10, "인공지능"),
             )
 
         _projects.value = listOf(
@@ -90,12 +91,25 @@ class MainViewModel : ViewModel() {
                 logo = R.drawable.app_logo_purple,
                 members = "김우석, 전인혁",
                 year = Date(2020, 6, 12),
-                tags = listOf(_tags.value!![4], _tags.value!![5], _tags.value!![8]),
+                tags = listOf(_tags.value!![2], _tags.value!![5], _tags.value!![8]),
                 subject = "진주 배달앱",
                 description = "진주의 음식점을을 모아 놓은 배달앱",
                 scenario = listOf(R.drawable.logo3, R.drawable.logo3),
                 gitAddress = "https://github.com/local",
                 email = "local@gnu.co.kr"
+            ),
+            Project(
+                projectName = "인공지능 및 영상처리를 활용한 AI 챗봇 및 카카오톡 메롱 짱",
+                teamName = "구석방 제작",
+                logo = R.drawable.logo3,
+                members = "성재석,전인혁,황혁주,김학률",
+                year = Date(2021, 6, 12),
+                tags = listOf(_tags.value!![4], _tags.value!![9]),
+                subject = "AI 챗봇",
+                description = "여러가지 신기술을 이용해서 메롱메롱하는 AI 챗봇",
+                scenario = listOf(R.drawable.app_logo_purple, R.drawable.logo3),
+                gitAddress = "https://github.com/chat",
+                email = "chat@gnu.co.kr"
             ),
         )
 
