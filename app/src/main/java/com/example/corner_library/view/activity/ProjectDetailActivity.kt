@@ -6,7 +6,6 @@ import android.util.Log
 import android.view.View
 import com.example.corner_library.R
 import com.example.corner_library.databinding.ActivityProjectDetailBinding
-import com.example.corner_library.databinding.ActivitySearchResultBinding
 import com.example.corner_library.model.Project
 
 class ProjectDetailActivity : AppCompatActivity() {
@@ -43,7 +42,28 @@ class ProjectDetailActivity : AppCompatActivity() {
     }
 
     private fun setProjectInfo() {
-        binding.projectLogo.setImageResource(project?.logo!!)
-        binding.projectName.text = project?.projectName
+        // logo
+        binding.projectLogo.setImageResource(project.logo)
+        // project name
+        binding.projectName.text = project.projectName
+        // team name
+        binding.teamName.text = project.teamName
+        // members
+        binding.members.text = ("(" + project.members + ")")
+        // tags
+        binding.tags.text = getTagsString()
+        // subject
+        binding.projectSubject.text = project.subject
+        // description
+        binding.projectDescription.text = project.description
+        // scenario
+        binding.scenario.setImageResource(project.scenario[0])
+    }
+
+    private fun getTagsString(): String {
+        var tags : String
+        tags = project.tags.map { "#" + it.name }.joinToString(" ", "", "")
+
+        return tags
     }
 }

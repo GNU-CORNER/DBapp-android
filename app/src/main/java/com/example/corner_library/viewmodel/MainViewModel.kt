@@ -105,8 +105,8 @@ class MainViewModel : ViewModel() {
                 members = "성재석,전인혁,황혁주,김학률",
                 year = Date(2021, 6, 12),
                 tags = listOf(_tags.value!![4], _tags.value!![9]),
-                subject = "AI 챗봇",
-                description = "여러가지 신기술을 이용해서 메롱메롱하는 AI 챗봇",
+                subject = "인공지능 AI 혁주모델을 활용하여 패턴인식 및 데이터 분석을 진행하여 답변하는 AI 챗봇",
+                description = "사용자의 지역 내의 개인과 자영업자들이 서로의 음식을 나누는 \"푸드쉐어링\"을 통해 잔반으로 인한 환경 문제를 예방하고 자영업자로 하여금 비용 절감의 효과도 누릴 수 있도록 돕는 앱서비스. ",
                 scenario = listOf(R.drawable.app_logo_purple, R.drawable.logo3),
                 gitAddress = "https://github.com/chat",
                 email = "chat@gnu.co.kr"

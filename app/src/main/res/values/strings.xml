@@ -49,4 +49,7 @@
     <!-- Project Text -->
     <string name="title_category">%s ></string>
     <string name="view_all_message">전체 보기</string>
+    <string name="project_subject">프로젝트 주제</string>
+    <string name="project_description">프로젝트 설명</string>
+    <string name="project_scenario">프로젝트 시나리오</string>
 </resources>
