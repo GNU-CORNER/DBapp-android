@@ -4,7 +4,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.corner_library.R
+import com.example.corner_library.adapters.CategoryAdapter
+import com.example.corner_library.adapters.ScenarioAdapter
 import com.example.corner_library.databinding.ActivityProjectDetailBinding
 import com.example.corner_library.model.Project
 
@@ -28,6 +31,7 @@ class ProjectDetailActivity : AppCompatActivity() {
         binding = ActivityProjectDetailBinding.inflate(layoutInflater)
         binding.lifecycleOwner = this
         binding.view = this
+        binding.project = project
         setContentView(binding.root)
     }
 
@@ -57,7 +61,7 @@ class ProjectDetailActivity : AppCompatActivity() {
         // description
         binding.projectDescription.text = project.description
         // scenario
-        binding.scenario.setImageResource(project.scenario[0])
+        setRecyclerView()
     }
 
     private fun getTagsString(): String {
@@ -65,5 +69,14 @@ class ProjectDetailActivity : AppCompatActivity() {
         tags = project.tags.map { "#" + it.name }.joinToString(" ", "", "")
 
         return tags
+    }
+
+    private fun setRecyclerView() {
+        binding.projectScenarios.apply {
+            layoutManager =
+                LinearLayoutManager(applicationContext, LinearLayoutManager.HORIZONTAL, false)
+            adapter = ScenarioAdapter()
+            setHasFixedSize(true)
+        }
     }
 }
