@@ -2,14 +2,12 @@ package com.example.corner_library.view.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.corner_library.R
-import com.example.corner_library.adapters.CategoryAdapter
 import com.example.corner_library.adapters.ScenarioAdapter
 import com.example.corner_library.databinding.ActivityProjectDetailBinding
-import com.example.corner_library.model.Project
+import com.example.corner_library.data.model.Project
 
 class ProjectDetailActivity : AppCompatActivity() {
     private lateinit var binding: ActivityProjectDetailBinding
