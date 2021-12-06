@@ -11,7 +11,7 @@ import com.example.corner_library.databinding.ItemRvSuggestionBinding
 import com.example.corner_library.model.Project
 import com.example.corner_library.view.activity.SearchResultActivity
 
-class SearchSuggestionAdapter(val clearText: () -> Unit) :
+class SearchSuggestionAdapter(val finish: () -> Unit) :
     ListAdapter<Project, SearchSuggestionAdapter.ViewHolder>(ProjectDiffUtil) {
 
     inner class ViewHolder(private val binding: ItemRvSuggestionBinding) :
@@ -21,11 +21,11 @@ class SearchSuggestionAdapter(val clearText: () -> Unit) :
             binding.executePendingBindings()
 
             binding.root.setOnClickListener {
-                clearText()
                 Intent(binding.root.context, SearchResultActivity::class.java).run {
                     putExtra("query", project)
                     ContextCompat.startActivity(binding.root.context, this, null)
                 }
+                finish()
             }
         }
     }

@@ -39,19 +39,20 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <EditText
-                android:id="@+id/ID"
+                android:id="@+id/et_id"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="60dp"
                 android:backgroundTint="@color/white"
                 android:hint="@string/hint_email_login"
+                android:inputType="textEmailAddress"
                 android:paddingHorizontal="10dp"
                 android:textColor="@color/white"
                 android:textColorHint="@color/gray"
                 android:textStyle="bold" />
 
             <EditText
-                android:id="@+id/password"
+                android:id="@+id/et_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="60dp"
