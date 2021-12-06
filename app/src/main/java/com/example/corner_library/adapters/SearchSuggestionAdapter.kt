@@ -1,6 +1,7 @@
 package com.example.corner_library.adapters
 
 import android.content.Intent
+import android.text.SpannableString
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
@@ -8,27 +9,10 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.corner_library.databinding.ItemRvSuggestionBinding
-import com.example.corner_library.model.Project
 import com.example.corner_library.view.activity.SearchResultActivity
 
 class SearchSuggestionAdapter(val finish: () -> Unit) :
-    ListAdapter<Project, SearchSuggestionAdapter.ViewHolder>(ProjectDiffUtil) {
-
-    inner class ViewHolder(private val binding: ItemRvSuggestionBinding) :
-        RecyclerView.ViewHolder(binding.root) {
-        fun bind(project: Project) {
-            binding.suggestion = project
-            binding.executePendingBindings()
-
-            binding.root.setOnClickListener {
-                Intent(binding.root.context, SearchResultActivity::class.java).run {
-                    putExtra("query", project)
-                    ContextCompat.startActivity(binding.root.context, this, null)
-                }
-                finish()
-            }
-        }
-    }
+    ListAdapter<SpannableString, SearchSuggestionAdapter.ViewHolder>(SuggestionDiffUtil) {
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -44,13 +28,32 @@ class SearchSuggestionAdapter(val finish: () -> Unit) :
         holder.bind(getItem(position))
     }
 
-    companion object ProjectDiffUtil : DiffUtil.ItemCallback<Project>() {
-        override fun areItemsTheSame(oldItem: Project, newItem: Project): Boolean {
+    inner class ViewHolder(private val binding: ItemRvSuggestionBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        fun bind(suggestion: SpannableString) {
+            binding.suggestion = suggestion
+            binding.executePendingBindings()
+
+            binding.root.setOnClickListener {
+                Intent(binding.root.context, SearchResultActivity::class.java).run {
+                    putExtra("query", suggestion)
+                    ContextCompat.startActivity(binding.root.context, this, null)
+                }
+                finish()
+            }
+        }
+    }
+
+    companion object SuggestionDiffUtil : DiffUtil.ItemCallback<SpannableString>() {
+        override fun areItemsTheSame(oldItem: SpannableString, newItem: SpannableString): Boolean {
             return oldItem == newItem
         }
 
-        override fun areContentsTheSame(oldItem: Project, newItem: Project): Boolean {
-            return oldItem.projectName == newItem.projectName && oldItem.subject == newItem.subject
+        override fun areContentsTheSame(
+            oldItem: SpannableString,
+            newItem: SpannableString
+        ): Boolean {
+            return oldItem == newItem
         }
     }
 }
