@@ -1,5 +1,6 @@
 package com.example.corner_library.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -113,11 +114,29 @@ class MainViewModel : ViewModel() {
             ),
         )
 
+//        _categories.value = listOf(
+//            Category("기초 설계 프로젝트 PBL", _projects.value!!),
+//            Category("소프트웨어 설계 PBL", _projects.value!!),
+//            Category("전공 종합 설계 PBL", _projects.value!!),
+//            Category("안드로이드", _projects.value!!)
+//        )
+
         _categories.value = listOf(
-            Category("기초 설계 프로젝트 PBL", _projects.value!!),
-            Category("소프트웨어 설계 PBL", _projects.value!!),
-            Category("전공 종합 설계 PBL", _projects.value!!),
-            Category("안드로이드", _projects.value!!)
+            Category("기초 설계 프로젝트 PBL", getProject("기초 설계 프로젝트 PBL")),
+            Category("소프트웨어 설계 프로젝트 PBL", getProject("소프트웨어 설계 프로젝트 PBL")),
+            Category("전공 종합 설계 프로젝트 PBL", getProject("전공 종합 설계 프로젝트 PBL")),
+            Category("안드로이드", getProject("안드로이드"))
         )
+
+    }
+    private fun getProject(tagName: String) : List<Project> {
+        val filterList : List<Project>
+
+        filterList = _projects.value!!.filter{
+            it.tags.filter { it.name == tagName }.isNotEmpty()
+        }
+        Log.d("디버그", tagName + filterList.toString())
+
+        return filterList
     }
 }
