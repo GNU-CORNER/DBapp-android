@@ -4,9 +4,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.corner_library.R
-import com.example.corner_library.model.Category
-import com.example.corner_library.model.Project
-import com.example.corner_library.model.Tag
+import com.example.corner_library.data.model.Category
+import com.example.corner_library.data.model.Project
+import com.example.corner_library.data.model.Tag
 import java.util.*
 
 class MainViewModel : ViewModel() {
