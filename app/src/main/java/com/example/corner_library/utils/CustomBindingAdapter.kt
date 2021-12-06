@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.corner_library.R
 import com.example.corner_library.adapters.CategoryAdapter
 import com.example.corner_library.adapters.MiniProjectAdapter
+import com.example.corner_library.adapters.ScenarioAdapter
 import com.example.corner_library.adapters.SearchSuggestionAdapter
 import com.example.corner_library.model.Category
 import com.example.corner_library.model.Project
@@ -46,5 +47,12 @@ object CustomBindingAdapter {
     fun setSuggestions(recyclerView: RecyclerView, suggestions: List<Project>?) {
         val adapter = recyclerView.adapter as SearchSuggestionAdapter
         adapter.submitList(suggestions)
+    }
+
+    @BindingAdapter("scenarios")
+    @JvmStatic
+    fun setScenarios(recyclerView: RecyclerView, scenarios: List<Int>?) {
+        val adapter = recyclerView.adapter as ScenarioAdapter
+        adapter.submitList(scenarios)
     }
 }

@@ -35,7 +35,7 @@
                 android:layout_marginVertical="5dp"
                 android:ellipsize="end"
                 android:lines="1"
-                android:text="@{project.name}"
+                android:text="@{project.projectName}"
                 android:textColor="@color/black"
                 android:textStyle="bold" />
 

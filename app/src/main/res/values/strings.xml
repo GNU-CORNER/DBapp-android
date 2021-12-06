@@ -49,6 +49,10 @@
     <!-- Project Text -->
     <string name="title_category">%s ></string>
     <string name="view_all_message">전체 보기</string>
+    <string name="project_subject">프로젝트 주제</string>
+    <string name="project_description">프로젝트 설명</string>
+    <string name="project_scenario">프로젝트 시나리오</string>
+    <string name="reference">참고</string>
 
     <!-- Login Exception Message -->
     <string name="badly_format_exception">The email address is badly formatted.</string>
@@ -59,4 +63,5 @@
     <string name="invalid_password_message">잘못된 비밀번호입니다.</string>
     <string name="not_verified_link_message">인증 링크를 눌러주세요.</string>
     <string name="empty_input_message">이메일과 비밀번호 모두 입력해주세요.</string>
+
 </resources>
