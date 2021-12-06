@@ -62,6 +62,9 @@ class ProjectDetailActivity : AppCompatActivity() {
         binding.projectDescription.text = project.description
         // scenario
         setRecyclerView()
+        // reference
+        binding.gitAddress.text = project.gitAddress
+        binding.contact.text = project.email
     }
 
     private fun getTagsString(): String {

@@ -52,4 +52,5 @@
     <string name="project_subject">프로젝트 주제</string>
     <string name="project_description">프로젝트 설명</string>
     <string name="project_scenario">프로젝트 시나리오</string>
+    <string name="reference">참고</string>
 </resources>
