@@ -5,7 +5,7 @@
 
         <variable
             name="project"
-            type="com.example.corner_library.model.Project" />
+            type="com.example.corner_library.data.model.Project" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
