@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.corner_library.R
 import com.example.corner_library.databinding.ItemRvCategoryBinding
-import com.example.corner_library.model.Category
+import com.example.corner_library.data.model.Category
 import com.example.corner_library.view.activity.SearchResultActivity
 
 class CategoryAdapter : ListAdapter<Category, CategoryAdapter.ViewHolder>(CategoryDiffUtil) {

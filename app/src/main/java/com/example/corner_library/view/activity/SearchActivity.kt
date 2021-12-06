@@ -62,6 +62,7 @@ class SearchActivity : AppCompatActivity() {
             layoutManager =
                 LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
             adapter = SearchSuggestionAdapter { finish() }
+            itemAnimator = null
         }
     }
 
@@ -82,7 +83,7 @@ class SearchActivity : AppCompatActivity() {
             }
             // 텍스트 입력 변경 시
             doOnTextChanged { query, _, _, _ ->
-                query?.let { viewModel.filterSuggestions(query.toString()) }
+                query?.let { viewModel.searchSuggestion(query.toString()) }
             }
         }
     }

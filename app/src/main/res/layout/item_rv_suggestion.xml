@@ -6,7 +6,7 @@
 
         <variable
             name="suggestion"
-            type="com.example.corner_library.model.Project" />
+            type="android.text.SpannableString" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -14,21 +14,31 @@
         android:layout_height="wrap_content"
         android:background="?attr/selectableItemBackground"
         android:clickable="true"
-        android:focusable="true">
+        android:focusable="true"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="20dp">
+
+        <ImageView
+            android:id="@+id/iv_suggestion_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:contentDescription="@{suggestion}"
+            android:src="@drawable/search_logo"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            android:id="@+id/tv_suggestion_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:paddingHorizontal="20dp"
-            android:paddingVertical="10dp"
-            android:text="@{suggestion.projectName}"
+            android:layout_marginStart="8dp"
+            android:text="@{suggestion}"
             android:textColor="@color/black"
-            android:textSize="15sp"
-            app:drawableStartCompat="@drawable/search_logo"
+            android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@id/iv_suggestion_icon"
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

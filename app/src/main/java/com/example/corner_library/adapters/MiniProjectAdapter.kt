@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.corner_library.databinding.ItemRvProjectMiniBinding
 import com.example.corner_library.databinding.ProjectCardBinding
-import com.example.corner_library.model.Project
+import com.example.corner_library.data.model.Project
 import com.example.corner_library.view.activity.ProjectDetailActivity
 
 class MiniProjectAdapter(val pageName: String) : ListAdapter<Project, MiniProjectAdapter.ViewHolder>(

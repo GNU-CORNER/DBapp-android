@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.corner_library.R
 import com.example.corner_library.adapters.MiniProjectAdapter
 import com.example.corner_library.databinding.ActivitySearchResultBinding
-import com.example.corner_library.model.Project
 import com.example.corner_library.viewmodel.MainViewModel
 
 class SearchResultActivity : AppCompatActivity() {
