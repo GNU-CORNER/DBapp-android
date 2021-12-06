@@ -1,16 +1,18 @@
 package com.example.corner_library.utils
 
+import android.text.SpannableString
 import android.widget.Button
 import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.corner_library.R
 import com.example.corner_library.adapters.CategoryAdapter
 import com.example.corner_library.adapters.MiniProjectAdapter
 import com.example.corner_library.adapters.ScenarioAdapter
 import com.example.corner_library.adapters.SearchSuggestionAdapter
-import com.example.corner_library.model.Category
-import com.example.corner_library.model.Project
+import com.example.corner_library.data.model.Category
+import com.example.corner_library.data.model.Project
 
 object CustomBindingAdapter {
     // 회원가입 페이지 번호에 따른 버튼 스타일 변경
@@ -42,17 +44,27 @@ object CustomBindingAdapter {
         adapter.submitList(projects)
     }
 
-    @BindingAdapter("suggestions")
-    @JvmStatic
-    fun setSuggestions(recyclerView: RecyclerView, suggestions: List<Project>?) {
-        val adapter = recyclerView.adapter as SearchSuggestionAdapter
-        adapter.submitList(suggestions)
-    }
-
     @BindingAdapter("scenarios")
     @JvmStatic
     fun setScenarios(recyclerView: RecyclerView, scenarios: List<Int>?) {
         val adapter = recyclerView.adapter as ScenarioAdapter
         adapter.submitList(scenarios)
+    }
+
+    @BindingAdapter("suggestions")
+    @JvmStatic
+    fun setSuggestions(recyclerView: RecyclerView, suggestions: List<SpannableString>) {
+        val adapter = recyclerView.adapter as SearchSuggestionAdapter
+        adapter.submitList(suggestions)
+
+        // 데이터가 추가됐을 경우 최상단으로 스크롤
+        adapter.registerAdapterDataObserver(object : RecyclerView.AdapterDataObserver() {
+            override fun onItemRangeInserted(positionStart: Int, itemCount: Int) {
+                (recyclerView.layoutManager as LinearLayoutManager).scrollToPositionWithOffset(
+                    positionStart,
+                    0
+                )
+            }
+        })
     }
 }
