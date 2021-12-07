@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.corner_library.databinding.ItemRvSuggestionBinding
 import com.example.corner_library.view.activity.SearchResultActivity
 
-class SearchSuggestionAdapter(val finish: () -> Unit) :
+class SearchSuggestionAdapter(private val from: String, private val todo: (String) -> Unit) :
     ListAdapter<SpannableString, SearchSuggestionAdapter.ViewHolder>(SuggestionDiffUtil) {
 
     override fun onCreateViewHolder(
@@ -35,11 +35,14 @@ class SearchSuggestionAdapter(val finish: () -> Unit) :
             binding.executePendingBindings()
 
             binding.root.setOnClickListener {
-                Intent(binding.root.context, SearchResultActivity::class.java).run {
-                    putExtra("query", suggestion)
-                    ContextCompat.startActivity(binding.root.context, this, null)
+                if (from == "SearchActivity") {
+                    Intent(binding.root.context, SearchResultActivity::class.java).run {
+                        putExtra("query", suggestion.toString())
+                        ContextCompat.startActivity(binding.root.context, this, null)
+                    }
                 }
-                finish()
+
+                todo(suggestion.toString())
             }
         }
     }
