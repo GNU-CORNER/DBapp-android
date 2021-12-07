@@ -15,6 +15,7 @@
     <!-- Actionbar Title -->
     <string name="title_register">SIGN UP</string>
     <string name="title_search">검색</string>
+    <string name="title_search_result">검색 결과</string>
 
     <!-- Button Text -->
     <string name="btn_register_next">다음</string>
