@@ -1,9 +1,11 @@
 package com.example.corner_library.utils
 
 import android.text.SpannableString
+import android.view.View
 import android.widget.Button
 import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
+import androidx.databinding.BindingConversion
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.corner_library.R
@@ -15,6 +17,12 @@ import com.example.corner_library.data.model.Category
 import com.example.corner_library.data.model.Project
 
 object CustomBindingAdapter {
+    @BindingConversion
+    @JvmStatic
+    fun convertBooleanToVisibility(visible: Boolean): Int {
+        return if (visible) View.VISIBLE else View.GONE
+    }
+
     // 회원가입 페이지 번호에 따른 버튼 스타일 변경
     @BindingAdapter("buttonType")
     @JvmStatic

@@ -61,7 +61,7 @@ class SearchActivity : AppCompatActivity() {
         binding.rvSuggestions.apply {
             layoutManager =
                 LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
-            adapter = SearchSuggestionAdapter { finish() }
+            adapter = SearchSuggestionAdapter("SearchActivity") { finish() }
             itemAnimator = null
         }
     }
@@ -69,10 +69,10 @@ class SearchActivity : AppCompatActivity() {
     // 검색 입력창 관련 설정
     private fun setSearchEditText() {
         binding.etSearch.apply {
-            setOnEditorActionListener { _, actionId, _ ->
-                if (actionId == EditorInfo.IME_ACTION_SEARCH) { // 키보드의 다음 버튼 클릭 시
+            setOnEditorActionListener { view, actionId, _ ->
+                if (actionId == EditorInfo.IME_ACTION_SEARCH && view.text.isNotEmpty()) { // 키보드의 검색 버튼 클릭 시
                     val intent = Intent(context, SearchResultActivity::class.java)
-                    intent.putExtra("query", this.text)
+                    intent.putExtra("query", this.text.toString())
                     startActivity(intent)
                     finish()
 
