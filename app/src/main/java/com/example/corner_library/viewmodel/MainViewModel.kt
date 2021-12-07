@@ -32,7 +32,7 @@ class MainViewModel : ViewModel() {
             Tag(9, "React"),
             Tag(10, "인공지능"),
             Tag(11, "게임"),
-            )
+        )
 
         _projects.value = listOf(
             Project(
@@ -129,7 +129,7 @@ class MainViewModel : ViewModel() {
             Project(
                 projectName = "코디 쉐어",
                 teamName = "codinginer",
-                logo = R.drawable.logo3,
+                logo = R.drawable.default_logo,
                 members = "김가은, 양소열, 이도연",
                 year = Date(2021, 6, 12),
                 tags = listOf(_tags.value!![3], _tags.value!![6], _tags.value!![8]),
