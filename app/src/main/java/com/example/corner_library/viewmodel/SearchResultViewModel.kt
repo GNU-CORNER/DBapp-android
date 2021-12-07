@@ -190,7 +190,12 @@ class SearchResultViewModel(paramQuery: String?, paramCategory: Category?) : Vie
             ),
         )
         paramQuery?.let { searchProject(it) }
-        paramCategory?.let { _results.value = it.projectList }
+        paramCategory?.let {
+            this.query.value = it.title
+            _isSearching.value = false
+            _isSearchProject = true
+            _results.value = it.projectList
+        }
     }
 
     // 프로젝트 검색
