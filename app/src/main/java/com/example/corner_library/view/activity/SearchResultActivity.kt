@@ -87,6 +87,7 @@ class SearchResultActivity : AppCompatActivity() {
             layoutManager =
                 LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
             adapter = MiniProjectAdapter("search")
+            itemAnimator = null
             setHasFixedSize(true)
         }
 
