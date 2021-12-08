@@ -50,6 +50,16 @@ object CustomBindingAdapter {
     fun setProjects(recyclerView: RecyclerView, projects: List<Project>?) {
         val adapter = recyclerView.adapter as MiniProjectAdapter
         adapter.submitList(projects)
+
+        // 데이터가 추가됐을 경우 최상단으로 스크롤
+        adapter.registerAdapterDataObserver(object : RecyclerView.AdapterDataObserver() {
+            override fun onItemRangeInserted(positionStart: Int, itemCount: Int) {
+                (recyclerView.layoutManager as LinearLayoutManager).scrollToPositionWithOffset(
+                    positionStart,
+                    0
+                )
+            }
+        })
     }
 
     @BindingAdapter("scenarios")
